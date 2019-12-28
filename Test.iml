@@ -1,0 +1,93 @@
+create table class_13(
+name varchar(20),
+sn int,
+first_time datetime,
+graduate_time timestamp,
+english double(5,2),
+math decimal(4,2)
+);
+
+insert into class_13 values
+('lily',3,57,99),
+('hdhd',4,98,83);
+
+select english from class_13 order by english;
+
+insert into class_13 values
+('fah',5,57,99),
+('hdhd',6,78,82),
+('xue',7,67,96),
+('gang',8,78,82);
+
+insert into class_13(name,sn) values
+('百里守约',9),
+('百里玄策',10);
+
+select distinct english from class_13;
+select * from class_13 where name like '百%';
+
+update class_13 set english=100;
+
+drop table class_13;
+
+create table sutdy(
+name varchar(20) not null,
+number int primary key,
+sex varchar(20),
+math int
+);
+
+insert into sutdy values
+('李烨',1,'男',100),
+('koby',2,'男',100),
+('lily',3,'女',100);
+
+create table student
+(
+name varchar(20) not null,
+sn int primary key,
+class int
+);
+
+create table course
+(
+name varchar(20) unique,
+id bigint primary key,
+credit decimal(2,1)
+);
+
+show databases ;
+use course;
+create table class
+(
+  id int primary key,
+  name varchar(20) not null
+);
+insert into class values
+(1,'java'),
+(2,'mysql');
+
+select * from class;
+
+drop table if exists student;
+create table student
+(
+  sn int primary key,
+  name varchar(20) not null,
+  classid int,
+  foreign key(classid) references class(id)
+);
+insert into student values
+  (1,'凯',1),
+  (2,'安其拉',1),
+  (3,'东方曜',2);
+
+select * from student;
+
+select * from class ,student where class.id = student.classid
+and class.id<=>1;
+
+
+
+
+ 
